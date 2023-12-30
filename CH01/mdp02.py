@@ -44,9 +44,10 @@ PossibleAction = possible_actions(agent_s_state)
 # of all the available actions.
 def ActionChoice(available_actions_range):
     if(sum(PossibleAction)>0):
-        next_action = int(ql.random.choice(PossibleAction,1))
+        new_next_action = (ql.random.choice(PossibleAction,1))
     if(sum(PossibleAction)<=0):
-        next_action = int(ql.random.choice(5,1))
+        new_next_action = (ql.random.choice(5,1))
+    next_action = int(new_next_action.item())
     return next_action
 
 # Sample next action to be performed
@@ -63,9 +64,10 @@ def reward(current_state, action, gamma):
     Max_State = ql.where(Q[action,] == ql.max(Q[action,]))[1]
 
     if Max_State.shape[0] > 1:
-        Max_State = int(ql.random.choice(Max_State, size = 1))
+        New_Max_State = (ql.random.choice(Max_State, size = 1))
     else:
-        Max_State = int(Max_State)
+        New_Max_State = (Max_State)
+    Max_State = int(New_Max_State.item())
     MaxValue = Q[action, Max_State]
     
     # The Bellman MDP based Q function
